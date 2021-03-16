@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-printf "\e[0;33m Init for Simply Audit Application ... \033[0m\n"
+printf "\e[0;33m Init for My API Application ... \033[0m\n"
 
 printf "\e[0;33m Create config file: core/app.cfg ... \033[0m"
 rm core/app.cfg

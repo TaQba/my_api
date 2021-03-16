@@ -1,6 +1,6 @@
-# SIMPLY HOSTING AUDITOR
+# MY API
 
-This project exposes an API and can be used to audit a server
+This example vanilla project to start REST API project
 
 | Environment | URL | Build status | Coverage |
 | ----------- | --- | -------- | -------- |
@@ -49,9 +49,9 @@ Please follow of example for endpoint users [/users]
 
 
 ## How to run test on DEV environment?
-app docker is the one named simply_audit_api
+docker container is named 'my_api'
 ```
-you@yourmachine$ docker exec -ti simply_audit_api bash 
+you@yourmachine$ docker exec -ti my_api bash 
 root@xxx:/code# $ ./bin/run-tests.sh
 ```
 'run-tests.sh' runs all tests in test_*.py files under /tests/unit

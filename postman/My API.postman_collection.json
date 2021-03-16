@@ -216,7 +216,6 @@
 					"response": []
 				}
 			],
-			"description": "const echoPostRequest = {\n  url: pm.environment.get(\"sh_audit_uri\")+\"auth\",\n  method: 'POST',\n  header: 'Content-Type:application/json',\n  body: {\n    mode: 'application/json',\n    raw: JSON.stringify\n        (\n            {\n            \tusername:pm.environment.get(\"sh_audit_user\"),\n            \tpassword:pm.environment.get(\"sh_audit_password\"),\n            }\n        )\n    }\n};\n\npm.sendRequest(echoPostRequest, function (err, res) {\n    <!--console.log(err ? err : res.json());-->\n    if (err === null) {\n        console.log('Saving the token and expiry date');\n        var responseJson = res.json();\n        pm.environment.set(\"sh_audit_token\", responseJson.access_token);\n    }\n});",
 			"event": [
 				{
 					"listen": "prerequest",
@@ -241,9 +240,9 @@
 							"};",
 							"",
 							"pm.sendRequest(echoPostRequest, function (err, res) {",
-							"    // console.log(err ? err : res.json());",
+							"    console.log(err ? err : res.json());",
 							"    if (err === null) {",
-							"        console.log('Saving the token and expiry date');",
+							"        console.log('Saving the token');",
 							"        var responseJson = res.json();",
 							"        pm.collectionVariables.set(\"my_api_token\", responseJson.access_token);",
 							"    }",
@@ -296,7 +295,7 @@
 					"script": {
 						"exec": [
 							"var data = JSON.parse(responseBody)",
-							"pm.environment.set(\"my_api_token\", data.access_token);"
+							"// pm.collectionVariables.set(\"my_api_token\", data.access_token);"
 						],
 						"type": "text/javascript"
 					}
@@ -361,6 +360,10 @@
 		},
 		{
 			"key": "my_api_token",
+			"value": ""
+		},
+		{
+			"key": "my_api_token2",
 			"value": ""
 		}
 	]
