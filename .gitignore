@@ -1,0 +1,13 @@
+*.pyc
+.coverage
+.cache
+.idea
+nbproject
+test.py
+*/__pycache__/*
+.DS_Store
+core/app.cfg
+core/scripts.cfg
+coverage_html_report/*
+logs/*
+htmlcov/*

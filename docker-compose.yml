@@ -1,0 +1,22 @@
+version: "3"
+services:
+  api:
+    build: .
+    container_name: my_api
+    ports:
+      - "5002:80"
+    volumes:
+      - .:/code
+    depends_on:
+      - mariadb
+
+  mariadb:
+    image: mariadb
+    container_name: my_mariadb
+    environment:
+      - MYSQL_DATABASE=my_api_dev
+      - MYSQL_USER=my_api
+      - MYSQL_PASSWORD=Th21fyk3RPLdsaarhWaG0qZEJI3yrCgd123
+      - MYSQL_ROOT_PASSWORD=123
+    ports:
+      - "3316:3306"
