@@ -1,7 +1,7 @@
 *.pyc
 .coverage
 .cache
-.idea
+.idea/*
 nbproject
 test.py
 */__pycache__/*
