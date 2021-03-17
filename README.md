@@ -79,3 +79,25 @@ You can find configuration file in {project}/postman and import this file into P
 ```bash
 tail -f -n300 /var/log/supervisor/supervisord.log 
 ```
+
+## How add new request ie 'PUT'
+1. Add new entry in app.py 
+    ```python
+    api.add_resource(Order, '/orders/<int:id>', endpoint='put')
+    ```
+2. Create routing  class or use existing core/routing/order.py and add new method 'put'.
+    ```python
+        def put(self, id):
+            return Controller.put(id, g.data)
+    ```
+    - method should return Controller output
+    - param validation can be add there @expects_json
+    - JWT authentication can be add there @jwt_required
+
+3.  Create controller  class or use existing core/controllers/order.py and add new method 'put'.
+    ```python
+        @staticmethod
+            def put(order_id, data):
+    ```
+    -   method proccess data returned from model
+    -   method handle exceptions

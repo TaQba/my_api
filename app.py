@@ -2,6 +2,7 @@ from core import app, db
 from flask_restful import Api
 from core.routers.ping import Ping
 from core.routers.user import User
+from core.routers.order import Order
 from core.routers.health_check import HealthCheck
 from flask_jwt import JWT, jwt_required, current_identity
 import core.models as models
@@ -39,6 +40,10 @@ api.add_resource(
 
 api.add_resource(HealthCheck, '/', '/health-check')
 
+# Route methods are define here
+api.add_resource(Order, '/orders/<int:id>', endpoint='get')
+api.add_resource(Order, '/orders/<int:id>', endpoint='put')
+api.add_resource(Order, '/orders', endpoint='post')
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1')

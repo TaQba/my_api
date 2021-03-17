@@ -1,0 +1,514 @@
+{
+	"info": {
+		"_postman_id": "fb6a8d6e-13c5-4553-8712-59b8e6534cad",
+		"name": "GForces API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Pings",
+			"item": [
+				{
+					"name": "Pinkgs List",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{my_api_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "file",
+							"file": {}
+						},
+						"url": {
+							"raw": "{{my_api_uri}}pings",
+							"host": [
+								"{{my_api_uri}}pings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET by ID",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{my_api_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{my_api_uri}}pings/1",
+							"host": [
+								"{{my_api_uri}}pings"
+							],
+							"path": [
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete by ID",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{my_api_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{my_api_uri}}/pings/1",
+							"host": [
+								"{{my_api_uri}}"
+							],
+							"path": [
+								"pings",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"const echoPostRequest = {",
+							"  url: pm.collectionVariables.get(\"my_api_uri\")+\"auth\",",
+							"//   url: \"http://localhost:5002/auth\",",
+							"  method: 'POST',",
+							"  header: 'Content-Type:application/json',",
+							"  body: {",
+							"    mode: 'application/json',",
+							"    raw: JSON.stringify",
+							"        (",
+							"            {",
+							"              username:pm.collectionVariables.get(\"username\"),",
+							"              password:pm.collectionVariables.get(\"password\"),",
+							"            }",
+							"        )",
+							"    }",
+							"};",
+							"",
+							"pm.sendRequest(echoPostRequest, function (err, res) {",
+							"    console.log(err ? err : res.json());",
+							"    if (err === null) {",
+							"        console.log('Saving the token and expiry date');",
+							"        var responseJson = res.json();",
+							"        pm.collectionVariables.set(\"my_api_token\", responseJson.access_token);",
+							"    }",
+							"});"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "users",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{my_api_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{my_api_uri}}users/1",
+							"host": [
+								"{{my_api_uri}}users"
+							],
+							"path": [
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "JWT {{my_api_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\":\"user\",\n\t\"password\":\"password\"\n}"
+						},
+						"url": {
+							"raw": "{{my_api_uri}}users",
+							"host": [
+								"{{my_api_uri}}users"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"const echoPostRequest = {",
+							"  url: pm.collectionVariables.get(\"my_api_uri\")+\"auth\",",
+							"//   url: \"http://localhost:5002/auth\",",
+							"  method: 'POST',",
+							"  header: 'Content-Type:application/json',",
+							"  body: {",
+							"    mode: 'application/json',",
+							"    raw: JSON.stringify",
+							"        (",
+							"            {",
+							"              username:pm.collectionVariables.get(\"username\"),",
+							"              password:pm.collectionVariables.get(\"password\"),",
+							"            }",
+							"        )",
+							"    }",
+							"};",
+							"",
+							"pm.sendRequest(echoPostRequest, function (err, res) {",
+							"    console.log(err ? err : res.json());",
+							"    if (err === null) {",
+							"        console.log('Saving the token');",
+							"        var responseJson = res.json();",
+							"        pm.collectionVariables.set(\"my_api_token\", responseJson.access_token);",
+							"    }",
+							"});"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{my_api_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"vehicle_manufacturer\": \"Fiat\",\r\n    \"model\":\"Punto\",\r\n    \"price\": 12040,\r\n    \"currency\": \"EUR\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{my_api_uri}}orders",
+							"host": [
+								"{{my_api_uri}}orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{my_api_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{my_api_uri}}orders/1",
+							"host": [
+								"{{my_api_uri}}orders"
+							],
+							"path": [
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{my_api_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"vehicle_manufacturer\": \"BMW\",\r\n    \"model\":\"M4\",\r\n    \"price\": 20000,\r\n    \"currency\": \"GBP\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{my_api_uri}}orders/1",
+							"host": [
+								"{{my_api_uri}}orders"
+							],
+							"path": [
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"const echoPostRequest = {",
+							"  url: pm.collectionVariables.get(\"my_api_uri\")+\"auth\",",
+							"//   url: \"http://localhost:5002/auth\",",
+							"  method: 'POST',",
+							"  header: 'Content-Type:application/json',",
+							"  body: {",
+							"    mode: 'application/json',",
+							"    raw: JSON.stringify",
+							"        (",
+							"            {",
+							"              username:pm.collectionVariables.get(\"username\"),",
+							"              password:pm.collectionVariables.get(\"password\"),",
+							"            }",
+							"        )",
+							"    }",
+							"};",
+							"",
+							"pm.sendRequest(echoPostRequest, function (err, res) {",
+							"    console.log(err ? err : res.json());",
+							"    if (err === null) {",
+							"        console.log('Saving the token');",
+							"        var responseJson = res.json();",
+							"        pm.collectionVariables.set(\"my_api_token\", responseJson.access_token);",
+							"    }",
+							"});"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "health_check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{my_api_uri}}/health-check",
+					"host": [
+						"{{my_api_uri}}"
+					],
+					"path": [
+						"health-check"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "auth",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = JSON.parse(responseBody)",
+							"// pm.collectionVariables.set(\"my_api_token\", data.access_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"developer\",\n    \"password\": \"Dev123LopeR\"\n}"
+				},
+				"url": {
+					"raw": "{{my_api_uri}}auth",
+					"host": [
+						"{{my_api_uri}}auth"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "my_api_uri",
+			"value": "http://localhost:5002/"
+		},
+		{
+			"key": "username",
+			"value": "developer"
+		},
+		{
+			"key": "password",
+			"value": "Dev123LopeR"
+		},
+		{
+			"key": "my_api_token",
+			"value": ""
+		},
+		{
+			"key": "my_api_token2",
+			"value": ""
+		}
+	]
+}
