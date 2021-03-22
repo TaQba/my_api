@@ -13,12 +13,6 @@ Werkzeug==0.15.0
 configparser==3.7.1
 alembic==1.0.10
 webargs==5.5.2
-
-git+https://simply-hosting-dev%40names.co.uk:WX6QtR8TDr%243cG%26x@git.as29550.net/simplyhosting/simply-logger-client-python.git
-git+https://simply-hosting-dev%40names.co.uk:WX6QtR8TDr%243cG%26x@git.as29550.net/simplyhosting/dex-client-python.git
-git+https://simply-hosting-dev%40names.co.uk:WX6QtR8TDr%243cG%26x@git.as29550.net/simplyhosting/simply-installer-client-python.git
-git+https://simply-hosting-dev%40names.co.uk:WX6QtR8TDr%243cG%26x@git.as29550.net/simplyhosting/simplyhosting-api-client-python.git
-
 pytest
 pytest-cov
 mock
